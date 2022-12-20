@@ -1,17 +1,10 @@
-# Spring Boot Quartz Schedulers
+# org.quartz.jobStore.driverDelegateClass = org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+#
+#
+# By: Ron Cordell - roncordell
+#  I didn't see this anywhere, so I thought I'd post it here. This is the script from Quartz to create the tables in a MySQL database, modified to use INNODB instead of MYISAM.
 
-**_Course_**
-
-[Udemy](https://www.udemy.com/course/spring-boot-quartz-scheduler-tutorial/)
-
-## Run Docker Mysql
-
-```
-docker run --name my-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=test1234 -d mysql:8.0.31
-```
-
-##  Mysql Script
-```CREATE SCHEMA quartz_demo;
+CREATE SCHEMA quartz_demo;
 
 USE quartz_demo;
 
@@ -185,8 +178,4 @@ CREATE INDEX IDX_QRTZ_FT_JG ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,JOB_GROUP);
 CREATE INDEX IDX_QRTZ_FT_T_G ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP);
 CREATE INDEX IDX_QRTZ_FT_TG ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,TRIGGER_GROUP);
 
-commit;```
-
-**__Modules__**
-
-1. [Quartz Schedulers](https://github.com/brunomilitzer/quartz/quartz-schedulers/tree/master/core)
+commit;
